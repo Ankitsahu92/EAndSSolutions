@@ -1,0 +1,25 @@
+<div class="page">
+    <header class="pageHeader">
+        <!-- <p>layout works!</p> -->
+        <!-- <div class="row">
+            <i class="fa fa-american-sign-language-interpreting fa-5x" aria-hidden="true"> </i>
+        </div> -->
+
+        <div class="row removeMarginPadding">
+            <div class="col-2">
+                <i (click)="navigateTo('/Home')" class="fa fa-home fa-3x"></i>
+            </div>
+            <div class="col-8 brand">
+                <!-- E&S Home Care Solution -->
+                <img src="assets/images/E_And_S_Logo.png" class="E_And_S_Logo">
+            </div>
+            <div class="col-2" style="display: inline-flex;justify-content: end;">
+                <div> <i class="fa fa-search fa-3x"></i></div>
+                <div> <img class="nurseImg" src="assets/images/nurse.jpg"></div>
+            </div>
+        </div>
+    </header>
+    <main class="pageContainer">
+        <router-outlet></router-outlet>
+    </main>
+</div>

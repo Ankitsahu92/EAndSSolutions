@@ -1,0 +1,41 @@
+// .wrapper {
+//     // display: flex;
+//     // align-items: center;
+//     // justify-content: center;
+//     height:100px; 
+//     width:300px; 
+//     //margin: -20px -50px; 
+//     position:relative;
+//     top:50%; 
+//     left:50%;
+//     background-color: red;
+//   }
+
+.flexContainer {
+    display: flex;           /* establish flex container */
+    flex-direction: row;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
+    height: 90vh;
+}
+
+.box {
+    height: 81px;
+    width: 200px;
+    margin: 5px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.NewEmployee{
+background-color: #ff6769;
+color: white;
+}
+.NewClient{
+color: #ec838a;
+}
