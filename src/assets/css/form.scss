@@ -1,0 +1,41 @@
+.lable {
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #ec838a;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.btnSave {
+  background-color: #ff6769;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  min-width: 100px;
+}
+
+.headerDiv {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btnHeader {
+  background-color: white;
+  color: #ec838a;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+
+.btnHeader.active {
+  background-color: #ff6769;
+  color: white;
+}
