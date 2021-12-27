@@ -1,1 +1,173 @@
-<p>new-employee works!</p>
+<div class="flex-row-container">
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Active</div>
+            <div class="col-6">
+                <p-inputSwitch [(ngModel)]="ActiveChecked"></p-inputSwitch>
+            </div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Insurence ID</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">City</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Bill To</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable"># of Children</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">County</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+
+
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">First Name</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">SSN</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">State</div>
+            <div class="col-6">
+                <p-dropdown styleClass="form-control" [options]="StateList" [(ngModel)]="selectedState"
+                    optionLabel="name"></p-dropdown>
+                <!-- <select name="State" class="form-control" id="ddlState"></select> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Middle Name</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Client ID</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Zip Code</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Last Name</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Gender</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Referred By</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Cell Phone</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Nurse</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Emergency Contact</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Ethnicity</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Case Coordinator</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Case Worker Phone</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Email</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Marital Status</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">Case Worker Email
+            </div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+
+
+    <!-- <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">County</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div>
+    <div class="flex-row-item">
+        <div class="row">
+            <div class="col-6 lable">County</div>
+            <div class="col-6"> <input type="text" class="form-control"></div>
+        </div>
+    </div> -->
+</div>
