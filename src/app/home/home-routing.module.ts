@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CaseCoordinatorResolver, GenderResolver, MaritalStatusResolver, NurseResolver, StateResolver } from '../share/resolver';
 import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
@@ -18,13 +19,24 @@ const routes: Routes = [
           import('./components/new-client/new-client.module').then(
             (m) => m.NewClientModule
           ),
+        resolve: {
+          GenderList: GenderResolver,
+          StateList: StateResolver,
+          MaritalStatusList: MaritalStatusResolver,
+        }
       },
       {
         path: 'NewEmployee',
         loadChildren: () =>
           import('./components/new-employee/new-employee.module').then(
             (m) => m.NewEmployeeModule
-          ),
+          ), resolve: {
+            GenderList: GenderResolver,
+            StateList: StateResolver,
+            MaritalStatusList: MaritalStatusResolver,
+            NurseResolverList: NurseResolver,
+            CaseCoordinatorResolverList: CaseCoordinatorResolver
+          }
       },
       { path: '', redirectTo: '/Home', pathMatch: 'full' }
     ]

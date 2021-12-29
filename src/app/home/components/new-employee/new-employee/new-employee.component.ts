@@ -15,10 +15,17 @@ export class NewEmployeeComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.frm = this.loadForm();
+    this.route.data.subscribe(data => {
+      this.GenderList = data['GenderList'];
+      this.MaritalStatusList = data['MaritalStatusList'];
+      this.StateList = data['StateList'];
+      this.NurseList = data['NurseResolverList'];
+      this.CaseCoordinatorList = data['CaseCoordinatorResolverList'];
+    });
   }
 
   ngOnInit(): void {
-    this.loadDdlValues();
+    // this.loadDdlValues();
   }
 
   loadForm() {

@@ -12,7 +12,8 @@ const primengModules = [
   InputSwitchModule,
 
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  //HttpClientModule
 ];
 
 @NgModule({
