@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { isNumberFn } from 'src/app/share/functionals/customFunctional';
 
 @Component({
   selector: 'app-new-client',
@@ -31,29 +32,37 @@ export class NewClientComponent implements OnInit {
   loadForm() {
     return this.fb.group({
       Active: [true, [Validators.required]],
-      BillTo: ['', [Validators.required]],
-      FirstName: ['', [Validators.required]],
-      MiddleName: ['', [Validators.required]],
-      LastName: ['', [Validators.required]],
-      CellPhone: ['', [Validators.required]],
-      Ethnicity: ['', [Validators.required]],
-      Email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      DateOfHire: ['', [Validators.required]],
+      City: ['', [Validators.required]],
       InsurenceID: ['', [Validators.required]],
-      NoOfChildren: ['', [Validators.required]],
-      SSN: ['', [Validators.required]],
+      BillTo: ['', [Validators.required]],
       ClientID: ['', [Validators.required]],
-      Gender: ['', [Validators.required]],
+      NoOfChildren: ['', [Validators.required]],
       Nurse: ['', [Validators.required]],
       CaseCoordinator: ['', [Validators.required]],
-      MaritalStatus: ['', [Validators.required]],
-      City: ['', [Validators.required]],
-      County: ['', [Validators.required]],
-      State: ['', [Validators.required]],
-      ZipCode: ['', [Validators.required]],
-      ReferredBy: ['', [Validators.required]],
-      EmergencyContact: ['', [Validators.required]],
       CaseWorkerPhone: ['', [Validators.required]],
       CaseWorkerEmail: ['', [Validators.required]],
+      ReferredBy: ['', [Validators.required]],
+      // CaseWorkerPhone: ['', [Validators.required]],
+      SSN: ['', [Validators.required]],
+      DateOfFirstCase: ['', [Validators.required]],
+      County: ['', [Validators.required]],
+      FirstName: ['', [Validators.required]],
+      DOB: ['', [Validators.required]],
+      State: ['', [Validators.required]],
+      MiddleName: ['', [Validators.required]],
+      EmployeeID: ['', [Validators.required]],
+      ZipCode: ['', [Validators.required]],
+      LastName: ['', [Validators.required]],
+      Gender: ['', [Validators.required]],
+      EmergencyPhone: ['', [Validators.required]],
+      CellPhone: ['', [Validators.required]],
+      HRSupervisor: ['', [Validators.required]],
+      EmergencyContact: ['', [Validators.required]],
+      HomePhone: ['', [Validators.required]],
+      Ethnicity: ['', [Validators.required]],
+      Email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      MaritalStatus: ['', [Validators.required]],
     });
   }
 
@@ -105,4 +114,7 @@ export class NewClientComponent implements OnInit {
     this.router.navigate([url])
   }
 
+  isNumber(evt: any) {
+    return isNumberFn(evt)
+  }
 }

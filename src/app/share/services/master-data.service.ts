@@ -33,4 +33,11 @@ export class MasterDataService {
     return this.http.get<MasterData[]>(`${this.apiBaseUrl}MasterData/GetCaseCoordinatorList`);
   }
 
+  GetEthnicityList() {
+    return this.http.get<MasterData[]>(`${this.apiBaseUrl}MasterData/GetEthnicityList`);
+  }
+
+  GetHRSupervisorList() {
+    return this.http.get<MasterData[]>(`${this.apiBaseUrl}MasterData/GetHRSupervisorList`);
+  }
 }

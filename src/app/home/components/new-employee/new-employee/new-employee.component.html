@@ -25,90 +25,86 @@
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Insurence ID</div>
-                <div class="col-6"> <input name="InsurenceID" formControlName="InsurenceID" type="text"
-                        class="form-control"></div>
+                <div class="col-6 lable">Date of Hire</div>
+                <div class="col-6"> <input formControlName="DateOfHire" name="name" type="text" class="form-control">
+                </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">City</div>
-                <div class="col-6"> <input name="City" formControlName="City" type="text" class="form-control"></div>
+                <div class="col-6"> <input formControlName="City" name="name" type="text" class="form-control"></div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Bill To</div>
-                <div class="col-6"> <input name="BillTo" formControlName="BillTo" type="text" class="form-control">
-                </div>
+                <div class="col-6 lable">SSN</div>
+                <div class="col-6"> <input formControlName="SSN" name="name" type="text" class="form-control"></div>
             </div>
         </div>
-
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable"># of Children</div>
-                <div class="col-6"> <input name="NoOfChildren" formControlName="NoOfChildren" type="text"
+                <div class="col-6 lable">Date of First Case</div>
+                <div class="col-6"> <input formControlName="DateOfFirstCase" name="name" type="text"
                         class="form-control"></div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">County</div>
-                <div class="col-6"> <input name="County" formControlName="County" type="text" class="form-control">
-                </div>
+                <div class="col-6"> <input formControlName="County" name="name" type="text" class="form-control"></div>
             </div>
         </div>
-
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">First Name</div>
-                <div class="col-6"> <input name="FirstName" formControlName="FirstName" type="text"
-                        class="form-control"></div>
+                <div class="col-6"> <input formControlName="FirstName" name="name" type="text" class="form-control">
+                </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">SSN</div>
-                <div class="col-6"> <input name="SSN" formControlName="SSN" type="text" class="form-control"></div>
+                <div class="col-6 lable">DOB</div>
+                <div class="col-6">
+                    <p-calendar formControlName="DOB" [showIcon]="true" inputId="icon"></p-calendar>
+                </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">State</div>
                 <div class="col-6">
-                    <p-dropdown styleClass="form-control" [options]="StateList" formControlName="State"
-                        optionLabel="name"></p-dropdown>
-                    <!-- <select name="State" class="form-control" id="ddlState"></select> -->
+                    <p-dropdown styleClass="form-control" [options]="StateList" formControlName="State" [filter]="true"
+                        filterBy="name" placeholder="Select" optionLabel="name">
+                    </p-dropdown>
                 </div>
             </div>
         </div>
-
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">Middle Name</div>
-                <div class="col-6"> <input name="MiddleName" formControlName="MiddleName" type="text"
-                        class="form-control"></div>
+                <div class="col-6"> <input formControlName="MiddleName" name="name" type="text" class="form-control">
+                </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Client ID</div>
-                <div class="col-6"> <input name="ClientID" formControlName="ClientID" type="text" class="form-control">
+                <div class="col-6 lable">Employee ID</div>
+                <div class="col-6"> <input formControlName="EmployeeID" name="name" type="text" class="form-control">
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">Zip Code</div>
-                <div class="col-6"> <input name="ZipCode" formControlName="ZipCode" type="text" class="form-control">
-                </div>
+                <div class="col-6"> <input formControlName="ZipCode" (keypress)="isNumber($event)" maxlength="6"
+                        name="name" type="text" class="form-control"></div>
             </div>
         </div>
-
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">Last Name</div>
-                <div class="col-6"> <input name="LastName" formControlName="LastName" type="text" class="form-control">
+                <div class="col-6"> <input formControlName="LastName" name="name" type="text" class="form-control">
                 </div>
             </div>
         </div>
@@ -117,72 +113,66 @@
                 <div class="col-6 lable">Gender</div>
                 <div class="col-6">
                     <p-dropdown styleClass="form-control" [options]="GenderList" formControlName="Gender"
-                        optionLabel="name"></p-dropdown>
+                        optionLabel="name" [filter]="true" filterBy="name" placeholder="Select"></p-dropdown>
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Referred By</div>
-                <div class="col-6">
-
-                    <input name="ReferredBy" formControlName="ReferredBy" type="text" class="form-control">
-                </div>
+                <div class="col-6 lable">Emergency Phone</div>
+                <div class="col-6"> <input (keypress)="isNumber($event)" maxlength="10" formControlName="EmergencyPhone"
+                        name="name" type="text" class="form-control"></div>
             </div>
         </div>
-
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">Cell Phone</div>
-                <div class="col-6"> <input name="CellPhone" formControlName="CellPhone" type="text"
-                        class="form-control">
+                <div class="col-6"> <input (keypress)="isNumber($event)" maxlength="10" formControlName="CellPhone"
+                        name="name" type="text" class="form-control">
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Nurse</div>
+                <div class="col-6 lable">HR Supervisor</div>
                 <div class="col-6">
-                    <p-dropdown styleClass="form-control" [options]="NurseList" formControlName="Nurse"
-                        optionLabel="name"></p-dropdown>
+                    <p-dropdown styleClass="form-control" [options]="HRSupervisor" formControlName="HRSupervisor"
+                        optionLabel="name" [filter]="true" filterBy="name" placeholder="Select"></p-dropdown>
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">Emergency Contact</div>
-                <div class="col-6"> <input name="EmergencyContact" formControlName="EmergencyContact" type="text"
-                        class="form-control"></div>
+                <div class="col-6"> <input (keypress)="isNumber($event)" maxlength="10"
+                        formControlName="EmergencyContact" name="name" type="text" class="form-control"></div>
+            </div>
+        </div>
+        <div class="flex-row-item">
+            <div class="row">
+                <div class="col-6 lable">Home Phone</div>
+                <div class="col-6"> <input (keypress)="isNumber($event)" maxlength="10" formControlName="HomePhone"
+                        name="name" type="text" class="form-control">
+                </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">Ethnicity</div>
-                <div class="col-6"> <input name="Ethnicity" formControlName="Ethnicity" type="text"
-                        class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="flex-row-item">
-            <div class="row">
-                <div class="col-6 lable">Case Coordinator</div>
                 <div class="col-6">
-                    <p-dropdown styleClass="form-control" [options]="CaseCoordinatorList"
-                        formControlName="CaseCoordinator" optionLabel="name"></p-dropdown>
+                    <p-dropdown styleClass="form-control" [options]="Ethnicity" formControlName="Ethnicity"
+                        optionLabel="name" [filter]="true" filterBy="name" placeholder="Select"></p-dropdown>
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Case Worker Phone</div>
-                <div class="col-6"> <input name="CaseWorkerPhone" formControlName="CaseWorkerPhone" type="text"
-                        class="form-control"></div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable">Email</div>
-                <div class="col-6"> <input name="Email" formControlName="Email" type="text" class="form-control"></div>
+                <div class="col-6"> <input formControlName="Email" name="name" type="text" class="form-control"></div>
             </div>
         </div>
         <div class="flex-row-item">
@@ -190,24 +180,10 @@
                 <div class="col-6 lable">Marital Status</div>
                 <div class="col-6">
                     <p-dropdown styleClass="form-control" [options]="MaritalStatusList" formControlName="MaritalStatus"
-                        optionLabel="name"></p-dropdown>
+                        [filter]="true" filterBy="name" placeholder="Select" optionLabel="name">
+                    </p-dropdown>
                 </div>
             </div>
-        </div>
-        <div class="flex-row-item">
-            <div class="row">
-                <div class="col-6 lable">Case Worker Email
-                </div>
-                <div class="col-6"> <input name="CaseWorkerEmail" formControlName="CaseWorkerEmail" type="text"
-                        class="form-control"></div>
-            </div>
-        </div>
-
-        <div class="flex-row-item">
-
-        </div>
-        <div class="flex-row-item">
-
         </div>
         <div class="flex-row-item">
             <div class="row">
@@ -215,6 +191,13 @@
                     <button class="btnSave">Save</button>
                 </div>
             </div>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{frm.value | json}}
         </div>
     </div>
 </form>

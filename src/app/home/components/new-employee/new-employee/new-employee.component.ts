@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { isNumberFn } from 'src/app/share/functionals/customFunctional';
 
 @Component({
   selector: 'app-new-employee',
@@ -19,8 +20,8 @@ export class NewEmployeeComponent implements OnInit {
       this.GenderList = data['GenderList'];
       this.MaritalStatusList = data['MaritalStatusList'];
       this.StateList = data['StateList'];
-      this.NurseList = data['NurseResolverList'];
-      this.CaseCoordinatorList = data['CaseCoordinatorResolverList'];
+      this.HRSupervisor = data['HRSupervisorList'];
+      this.Ethnicity = data['EthnicityList'];
     });
   }
 
@@ -33,20 +34,11 @@ export class NewEmployeeComponent implements OnInit {
       Active: [true, [Validators.required]],
       DateOfHire: ['', [Validators.required]],
       City: ['', [Validators.required]],
-      InsurenceID: ['', [Validators.required]],
-      BillTo: ['', [Validators.required]],
-      ClientID: ['', [Validators.required]],
-      NoOfChildren: ['', [Validators.required]],
-      Nurse: ['', [Validators.required]],
-      CaseCoordinator: ['', [Validators.required]],
-      CaseWorkerPhone: ['', [Validators.required]],
-      CaseWorkerEmail: ['', [Validators.required]],
-      ReferredBy: ['', [Validators.required]],
-      // CaseWorkerPhone: ['', [Validators.required]],
       SSN: ['', [Validators.required]],
       DateOfFirstCase: ['', [Validators.required]],
       County: ['', [Validators.required]],
       FirstName: ['', [Validators.required]],
+      Email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       DOB: ['', [Validators.required]],
       State: ['', [Validators.required]],
       MiddleName: ['', [Validators.required]],
@@ -60,17 +52,16 @@ export class NewEmployeeComponent implements OnInit {
       EmergencyContact: ['', [Validators.required]],
       HomePhone: ['', [Validators.required]],
       Ethnicity: ['', [Validators.required]],
-      Email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      MaritalStatus: ['', [Validators.required]],
+      MaritalStatus: ['', [Validators.required]]
     });
   }
 
   //***********ddl State Begin ******* */
   StateList: any[] = [];
   GenderList: any[] = [];
-  NurseList: any[] = [];
+  HRSupervisor: any[] = [];
   MaritalStatusList: any[] = [];
-  CaseCoordinatorList: any[] = [];
+  Ethnicity: any[] = [];
   //***********ddl State End ******* */
 
   loadDdlValues() {
@@ -87,7 +78,7 @@ export class NewEmployeeComponent implements OnInit {
       { name: 'Female', code: 'Female' },
     ];
 
-    this.NurseList = [
+    this.HRSupervisor = [
       { name: 'Nurse 1', code: 1 },
       { name: 'Nurse 2', code: 2 },
     ];
@@ -102,14 +93,18 @@ export class NewEmployeeComponent implements OnInit {
       { name: 'Unknown', code: 7 },
     ];
 
-    this.CaseCoordinatorList = [
-      { name: 'Case Coordinator 1', code: 1 },
-      { name: 'Case Coordinator 2', code: 2 },
+    this.Ethnicity = [
+      { name: 'Ethnicity 1', code: 1 },
+      { name: 'Ethnicity 2', code: 2 },
     ];
   }
 
   onCardClicked(item: string) {
     const url = item == 'New Client' ? "/NewClient" : "/NewEmployee";
     this.router.navigate([url])
+  }
+
+  isNumber(evt: any) {
+    return isNumberFn(evt)
   }
 }
