@@ -1,7 +1,7 @@
 
 export interface InsertUpdateEmployeeModel {
-    createdBy: number;
-    createdOn: Date;
+    createdBy?: number;
+    createdOn?: Date;
     createdByIP?: string;
     modifiedBy?: number;
     modifiedOn?: Date;
@@ -15,8 +15,8 @@ export interface InsertUpdateEmployeeModel {
     cellPhone: string;
     homePhone: string;
     email: string;
-    dateOfHire: string;
-    dateOfFirstCase: string;
+    dateOfHire: Date;
+    dateOfFirstCase: Date;
     employeeID: string;
     gender: string;
     hrSupervisor: string;
@@ -28,4 +28,5 @@ export interface InsertUpdateEmployeeModel {
     emergencyPhone: string;
     emergencyContact: string;
     maritalStatus: string;
+    dob: Date;
 }
