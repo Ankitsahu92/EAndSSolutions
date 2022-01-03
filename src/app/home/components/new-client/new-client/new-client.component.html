@@ -17,7 +17,7 @@
     <div class="flexContainer">
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Active</div>
+                <div class="col-6 lable required">Active</div>
                 <div class="col-6">
                     <p-inputSwitch formControlName="Active" placeholder="Active"></p-inputSwitch>
                 </div>
@@ -25,59 +25,67 @@
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Insurence ID</div>
+                <div class="col-6 lable required">Insurence ID</div>
                 <div class="col-6"> <input name="InsurenceID" formControlName="InsurenceID" type="text"
-                        class="form-control"></div>
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('InsurenceID')?.invalid && showError}">
+                </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">City</div>
-                <div class="col-6"> <input name="City" formControlName="City" type="text" class="form-control"></div>
+                <div class="col-6 lable required">City</div>
+                <div class="col-6"> <input name="City" formControlName="City" type="text"
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('City')?.invalid && showError}"></div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Bill To</div>
-                <div class="col-6"> <input name="BillTo" formControlName="BillTo" type="text" class="form-control">
+                <div class="col-6 lable required">Bill To</div>
+                <div class="col-6"> <input name="BillTo" formControlName="BillTo" type="text"
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('BillTo')?.invalid && showError}">
                 </div>
             </div>
         </div>
 
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable"># of Children</div>
-                <div class="col-6"> <input name="NoOfChildren" formControlName="NoOfChildren" type="text"
-                        class="form-control"></div>
+                <div class="col-6 lable required"># of Children</div>
+                <div class="col-6"> <input (keypress)="isNumber($event)" maxlength="10" name="NoOfChildren"
+                        formControlName="NoOfChildren" type="text"
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('NoOfChildren')?.invalid && showError}">
+                </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">County</div>
-                <div class="col-6"> <input name="County" formControlName="County" type="text" class="form-control">
+                <div class="col-6 lable required">County</div>
+                <div class="col-6"> <input name="County" formControlName="County" type="text"
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('County')?.invalid && showError}">
                 </div>
             </div>
         </div>
 
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">First Name</div>
+                <div class="col-6 lable required">First Name</div>
                 <div class="col-6"> <input name="FirstName" formControlName="FirstName" type="text"
-                        class="form-control"></div>
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('FirstName')?.invalid && showError}">
+                </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">SSN</div>
-                <div class="col-6"> <input name="SSN" formControlName="SSN" type="text" class="form-control"></div>
+                <div class="col-6 lable required">SSN</div>
+                <div class="col-6"> <input name="SSN" formControlName="SSN" type="text"
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('SSN')?.invalid && showError}"></div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">State</div>
+                <div class="col-6 lable required">State</div>
                 <div class="col-6">
-                    <p-dropdown styleClass="form-control" [options]="StateList" formControlName="State" [filter]="true"
-                        filterBy="name" placeholder="Select" optionLabel="name">
+                    <p-dropdown [styleClass]="hasError('State')" [options]="StateList" formControlName="State"
+                        [filter]="true" filterBy="name" placeholder="Select" optionLabel="name">
                     </p-dropdown>
                     <!-- <select name="State" class="form-control" id="ddlState"></select> -->
                 </div>
@@ -86,90 +94,105 @@
 
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Middle Name</div>
+                <div class="col-6 lable required">Middle Name</div>
                 <div class="col-6"> <input name="MiddleName" formControlName="MiddleName" type="text"
-                        class="form-control"></div>
-            </div>
-        </div>
-        <div class="flex-row-item">
-            <div class="row">
-                <div class="col-6 lable">Client ID</div>
-                <div class="col-6"> <input name="ClientID" formControlName="ClientID" type="text" class="form-control">
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('MiddleName')?.invalid && showError}">
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Zip Code</div>
-                <div class="col-6"> <input name="ZipCode" (keypress)="isNumber($event)" maxlength="6"
-                        formControlName="ZipCode" type="text" class="form-control">
+                <div class="col-6 lable required">Client ID</div>
+                <div class="col-6"> <input name="ClientID" formControlName="ClientID" type="text"
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('ClientID')?.invalid && showError}">
+                </div>
+            </div>
+        </div>
+        <div class="flex-row-item">
+            <div class="row">
+                <div class="col-6 lable required">Zip Code</div>
+                <div class="col-6">
+                    <p-inputMask [styleClass]="hasError('ZipCode')" mask="999999" formControlName="ZipCode"
+                        placeholder="999999"></p-inputMask>
+                    <!-- <input name="ZipCode" (keypress)="isNumber($event)" maxlength="6"
+                        formControlName="ZipCode" type="text" class="form-control"> -->
                 </div>
             </div>
         </div>
 
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Last Name</div>
-                <div class="col-6"> <input name="LastName" formControlName="LastName" type="text" class="form-control">
+                <div class="col-6 lable required">Last Name</div>
+                <div class="col-6"> <input name="LastName" formControlName="LastName" type="text"
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('LastName')?.invalid && showError}">
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Gender</div>
+                <div class="col-6 lable required">Gender</div>
                 <div class="col-6">
-                    <p-dropdown styleClass="form-control" [options]="GenderList" formControlName="Gender"
+                    <p-dropdown [styleClass]="hasError('Gender')" [options]="GenderList" formControlName="Gender"
                         optionLabel="name" [filter]="true" filterBy="name" placeholder="Select"></p-dropdown>
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Referred By</div>
+                <div class="col-6 lable required">Referred By</div>
                 <div class="col-6">
 
-                    <input name="ReferredBy" formControlName="ReferredBy" type="text" class="form-control">
+                    <input name="ReferredBy" formControlName="ReferredBy" type="text"
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('ReferredBy')?.invalid && showError}">
                 </div>
             </div>
         </div>
 
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Cell Phone</div>
-                <div class="col-6"> <input name="CellPhone" (keypress)="isNumber($event)" maxlength="10"
-                        formControlName="CellPhone" type="text" class="form-control">
+                <div class="col-6 lable required">Cell Phone</div>
+                <div class="col-6">
+                    <p-inputMask [styleClass]="hasError('CellPhone')" mask="(999) 999-9999" formControlName="CellPhone"
+                        placeholder="(999) 999-9999"></p-inputMask>
+                    <!-- <input name="CellPhone" (keypress)="isNumber($event)" maxlength="10"
+                        formControlName="CellPhone" type="text" class="form-control"> -->
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Nurse</div>
+                <div class="col-6 lable required">Nurse</div>
                 <div class="col-6">
-                    <p-dropdown styleClass="form-control" [options]="NurseList" formControlName="Nurse"
+                    <p-dropdown [styleClass]="hasError('Nurse')" [options]="NurseList" formControlName="Nurse"
                         optionLabel="name" [filter]="true" filterBy="name" placeholder="Select"></p-dropdown>
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Emergency Contact</div>
-                <div class="col-6"> <input (keypress)="isNumber($event)" maxlength="10" name="EmergencyContact"
-                        formControlName="EmergencyContact" type="text" class="form-control"></div>
-            </div>
-        </div>
-        <div class="flex-row-item">
-            <div class="row">
-                <div class="col-6 lable">Ethnicity</div>
+                <div class="col-6 lable required">Emergency Contact</div>
                 <div class="col-6">
-                    <input name="Ethnicity" formControlName="Ethnicity" type="text" class="form-control">
+                    <p-inputMask [styleClass]="hasError('EmergencyContact')" mask="(999) 999-9999"
+                        formControlName="EmergencyContact" placeholder="(999) 999-9999"></p-inputMask>
+                    <!-- <input (keypress)="isNumber($event)" maxlength="10" name="EmergencyContact"
+                        formControlName="EmergencyContact" type="text" class="form-control"> -->
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Case Coordinator</div>
+                <div class="col-6 lable required">Ethnicity</div>
                 <div class="col-6">
-                    <p-dropdown styleClass="form-control" [options]="CaseCoordinatorList"
+                    <input name="Ethnicity" formControlName="Ethnicity" type="text"
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('Ethnicity')?.invalid && showError}">
+                </div>
+            </div>
+        </div>
+        <div class="flex-row-item">
+            <div class="row">
+                <div class="col-6 lable required">Case Coordinator</div>
+                <div class="col-6">
+                    <p-dropdown [styleClass]="hasError('CaseCoordinator')" [options]="CaseCoordinatorList"
                         formControlName="CaseCoordinator" optionLabel="name" [filter]="true" filterBy="name"
                         placeholder="Select"></p-dropdown>
                 </div>
@@ -177,32 +200,39 @@
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Case Worker Phone</div>
-                <div class="col-6"> <input name="CaseWorkerPhone" formControlName="CaseWorkerPhone" type="text"
-                        class="form-control"></div>
-            </div>
-        </div>
-        <div class="flex-row-item">
-            <div class="row">
-                <div class="col-6 lable">Email</div>
-                <div class="col-6"> <input name="Email" formControlName="Email" type="text" class="form-control"></div>
-            </div>
-        </div>
-        <div class="flex-row-item">
-            <div class="row">
-                <div class="col-6 lable">Marital Status</div>
+                <div class="col-6 lable required">Case Worker Phone</div>
                 <div class="col-6">
-                    <p-dropdown styleClass="form-control" [options]="MaritalStatusList" formControlName="MaritalStatus"
-                        optionLabel="name" [filter]="true" filterBy="name" placeholder="Select"></p-dropdown>
+                    <p-inputMask [styleClass]="hasError('CaseWorkerPhone')" mask="(999) 999-9999"
+                        formControlName="CaseWorkerPhone" placeholder="(999) 999-9999"></p-inputMask>
+                    <!-- <input name="CaseWorkerPhone" formControlName="CaseWorkerPhone" type="text"
+                        class="form-control"> -->
                 </div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable">Case Worker Email
+                <div class="col-6 lable required">Email</div>
+                <div class="col-6"> <input name="Email" formControlName="Email" type="text"
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('Email')?.invalid && showError}"></div>
+            </div>
+        </div>
+        <div class="flex-row-item">
+            <div class="row">
+                <div class="col-6 lable required">Marital Status</div>
+                <div class="col-6">
+                    <p-dropdown [styleClass]="hasError('MaritalStatus')" [options]="MaritalStatusList"
+                        formControlName="MaritalStatus" optionLabel="name" [filter]="true" filterBy="name"
+                        placeholder="Select"></p-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row-item">
+            <div class="row">
+                <div class="col-6 lable required">Case Worker Email
                 </div>
                 <div class="col-6"> <input name="CaseWorkerEmail" formControlName="CaseWorkerEmail" type="text"
-                        class="form-control"></div>
+                        [ngClass]="{'form-control ': true, 'is-invalid': frm.get('CaseWorkerEmail')?.invalid && showError}">
+                </div>
             </div>
         </div>
 
@@ -215,7 +245,7 @@
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-12" style="text-align: center;">
-                    <button class="btnSave">Save</button>
+                    <button class="btnSave" (click)="onSave()">Save</button>
                 </div>
             </div>
         </div>

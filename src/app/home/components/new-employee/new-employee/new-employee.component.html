@@ -110,7 +110,7 @@
             <div class="row">
                 <div class="col-6 lable required">Zip Code</div>
                 <div class="col-6">
-                    <p-inputMask [styleClass]="hasError('ZipCode')" mask="999999" formControlName="CellPhone"
+                    <p-inputMask [styleClass]="hasError('ZipCode')" mask="999999" formControlName="ZipCode"
                         placeholder="999999"></p-inputMask>
                     <!--                     
                     <input formControlName="ZipCode" (keypress)="isNumber($event)" maxlength="6"
@@ -141,7 +141,7 @@
                 <div class="col-6 lable required">Emergency Phone</div>
                 <div class="col-6">
                     <p-inputMask [styleClass]="hasError('EmergencyPhone')" mask="(999) 999-9999"
-                        formControlName="CellPhone" placeholder="(999) 999-9999"></p-inputMask>
+                        formControlName="EmergencyPhone" placeholder="(999) 999-9999"></p-inputMask>
                     <!-- <input (keypress)="isNumber($event)" maxlength="10" formControlName="EmergencyPhone"
                         name="EmergencyPhone" type="text"
                         [ngClass]="{'form-control': true, 'is-invalid': frm.get('EmergencyPhone')?.invalid && showError}"> -->
@@ -152,8 +152,8 @@
             <div class="row">
                 <div class="col-6 lable required">Cell Phone</div>
                 <div class="col-6">
-                    <p-inputMask [styleClass]="hasError('HRSupervisor')" mask="(999) 999-9999"
-                        formControlName="CellPhone" placeholder="(999) 999-9999"></p-inputMask>
+                    <p-inputMask [styleClass]="hasError('CellPhone')" mask="(999) 999-9999" formControlName="CellPhone"
+                        placeholder="(999) 999-9999"></p-inputMask>
                     <!-- <input (keypress)="isNumber($event)" maxlength="10" formControlName="CellPhone"
                         name="CellPhone" type="text"
                         [ngClass]="{'form-control': true, 'is-invalid': frm.get('CellPhone')?.invalid && showError}"> -->
@@ -175,7 +175,7 @@
                 <div class="col-6 lable required">Emergency Contact</div>
                 <div class="col-6">
                     <p-inputMask [styleClass]="hasError('EmergencyContact')" mask="(999) 999-9999"
-                        formControlName="CellPhone" placeholder="(999) 999-9999"></p-inputMask>
+                        formControlName="EmergencyContact" placeholder="(999) 999-9999"></p-inputMask>
                     <!-- <input (keypress)="isNumber($event)" maxlength="10"
                         formControlName="EmergencyContact" name="EmergencyContact" type="text"
                         [ngClass]="{'form-control': true, 'is-invalid': frm.get('EmergencyContact')?.invalid && showError}"> -->
@@ -186,7 +186,7 @@
             <div class="row">
                 <div class="col-6 lable required">Home Phone</div>
                 <div class="col-6">
-                    <p-inputMask [styleClass]="hasError('HomePhone')" mask="(999) 999-9999" formControlName="CellPhone"
+                    <p-inputMask [styleClass]="hasError('HomePhone')" mask="(999) 999-9999" formControlName="HomePhone"
                         placeholder="(999) 999-9999"></p-inputMask>
                     <!-- <input (keypress)="isNumber($event)" maxlength="10" formControlName="HomePhone"
                         name="HomePhone" type="text"

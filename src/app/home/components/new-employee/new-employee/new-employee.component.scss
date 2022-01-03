@@ -33,12 +33,3 @@
   flex: 0 0 300px;
   padding: 0;
 }
-
-.lable.required:after {
-  content: "*";
-  color: red;
-}
-
-.hasError {
-  border-color: #dc3545 !important;
-}

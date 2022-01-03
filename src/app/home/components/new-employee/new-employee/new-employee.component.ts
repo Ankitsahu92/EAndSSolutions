@@ -133,8 +133,8 @@ export class NewEmployeeComponent implements OnInit {
       firstName: data.FirstName,
       middleName: data.MiddleName,
       lastName: data.LastName,
-      cellPhone: data.CellPhone,
-      homePhone: data.HomePhone,
+      cellPhone: this.cleanPhoneNum(data.CellPhone),
+      homePhone: this.cleanPhoneNum(data.HomePhone),
       email: data.Email,
       dateOfHire: data.DateOfHire,
       dateOfFirstCase: data.DateOfFirstCase,
@@ -146,8 +146,8 @@ export class NewEmployeeComponent implements OnInit {
       county: data.County,
       state: "" + data.State?.id,
       zipCode: data.ZipCode,
-      emergencyPhone: data.EmergencyPhone,
-      emergencyContact: data.EmergencyContact,
+      emergencyPhone: this.cleanPhoneNum(data.EmergencyPhone),
+      emergencyContact: this.cleanPhoneNum(data.EmergencyContact),
       maritalStatus: "" + data.MaritalStatus?.id,
       dob: data.DOB
     }
@@ -165,6 +165,8 @@ export class NewEmployeeComponent implements OnInit {
       console.log(res);
       if (res && res.success) {
         this.messageService.Success(res.message);
+        this.showError = false;
+        this.frm.reset();
       } else {
         this.messageService.Error(res.message);
       }
@@ -179,10 +181,15 @@ export class NewEmployeeComponent implements OnInit {
     else
       return `form-control ${this.frm.get(fieldName)?.invalid && this.showError ? ' is-invalid' : ''}`
   }
+
   // isRequired(fieldName: string) {
   //   const error: any = this.frm.get(fieldName)?.errors;
   //   console.log(this.frm.get(fieldName)?.validator());
 
   //   return error?.required ? 'col-6 lable  required' : 'col-6 lable ';
   // }
+
+  cleanPhoneNum(data: string) {
+    return data.replace('(', '').replace(')', '').replace('-', '').replace(' ', '');
+  }
 }

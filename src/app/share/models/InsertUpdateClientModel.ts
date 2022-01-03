@@ -1,7 +1,7 @@
 
 export interface InsertUpdateClientModel {
-    createdBy: number;
-    createdOn: Date;
+    createdBy?: number;
+    createdOn?: Date;
     createdByIP?: string;
     modifiedBy?: number;
     modifiedOn?: Date;

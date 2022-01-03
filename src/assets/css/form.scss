@@ -40,3 +40,12 @@
   background-color: #ff6769;
   color: white;
 }
+
+.lable.required:after {
+  content: "*";
+  color: red;
+}
+
+.hasError {
+  border-color: #dc3545 !important;
+}
