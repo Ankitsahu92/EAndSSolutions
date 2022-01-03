@@ -26,7 +26,7 @@
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable required">Insurence ID</div>
-                <div class="col-6"> <input name="InsurenceID" formControlName="InsurenceID" type="text"
+                <div class="col-6"> <input maxlength="25" name="InsurenceID" formControlName="InsurenceID" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('InsurenceID')?.invalid && showError}">
                 </div>
             </div>
@@ -34,14 +34,14 @@
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable required">City</div>
-                <div class="col-6"> <input name="City" formControlName="City" type="text"
+                <div class="col-6"> <input maxlength="25" name="City" formControlName="City" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('City')?.invalid && showError}"></div>
             </div>
         </div>
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable required">Bill To</div>
-                <div class="col-6"> <input name="BillTo" formControlName="BillTo" type="text"
+                <div class="col-6"> <input maxlength="25" name="BillTo" formControlName="BillTo" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('BillTo')?.invalid && showError}">
                 </div>
             </div>
@@ -59,7 +59,7 @@
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable required">County</div>
-                <div class="col-6"> <input name="County" formControlName="County" type="text"
+                <div class="col-6"> <input maxlength="25" name="County" formControlName="County" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('County')?.invalid && showError}">
                 </div>
             </div>
@@ -68,7 +68,7 @@
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable required">First Name</div>
-                <div class="col-6"> <input name="FirstName" formControlName="FirstName" type="text"
+                <div class="col-6"> <input maxlength="25" name="FirstName" formControlName="FirstName" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('FirstName')?.invalid && showError}">
                 </div>
             </div>
@@ -76,7 +76,7 @@
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable required">SSN</div>
-                <div class="col-6"> <input name="SSN" formControlName="SSN" type="text"
+                <div class="col-6"> <input maxlength="25" name="SSN" formControlName="SSN" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('SSN')?.invalid && showError}"></div>
             </div>
         </div>
@@ -95,7 +95,7 @@
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable required">Middle Name</div>
-                <div class="col-6"> <input name="MiddleName" formControlName="MiddleName" type="text"
+                <div class="col-6"> <input maxlength="25" name="MiddleName" formControlName="MiddleName" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('MiddleName')?.invalid && showError}">
                 </div>
             </div>
@@ -103,7 +103,7 @@
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable required">Client ID</div>
-                <div class="col-6"> <input name="ClientID" formControlName="ClientID" type="text"
+                <div class="col-6"> <input maxlength="25" name="ClientID" formControlName="ClientID" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('ClientID')?.invalid && showError}">
                 </div>
             </div>
@@ -123,7 +123,7 @@
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable required">Last Name</div>
-                <div class="col-6"> <input name="LastName" formControlName="LastName" type="text"
+                <div class="col-6"> <input maxlength="25" name="LastName" formControlName="LastName" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('LastName')?.invalid && showError}">
                 </div>
             </div>
@@ -142,7 +142,7 @@
                 <div class="col-6 lable required">Referred By</div>
                 <div class="col-6">
 
-                    <input name="ReferredBy" formControlName="ReferredBy" type="text"
+                    <input name="ReferredBy" maxlength="25" formControlName="ReferredBy" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('ReferredBy')?.invalid && showError}">
                 </div>
             </div>
@@ -183,7 +183,7 @@
             <div class="row">
                 <div class="col-6 lable required">Ethnicity</div>
                 <div class="col-6">
-                    <input name="Ethnicity" formControlName="Ethnicity" type="text"
+                    <input maxlength="25" name="Ethnicity" formControlName="Ethnicity" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('Ethnicity')?.invalid && showError}">
                 </div>
             </div>
@@ -212,7 +212,7 @@
         <div class="flex-row-item">
             <div class="row">
                 <div class="col-6 lable required">Email</div>
-                <div class="col-6"> <input name="Email" formControlName="Email" type="text"
+                <div class="col-6"> <input maxlength="25" name="Email" formControlName="Email" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('Email')?.invalid && showError}"></div>
             </div>
         </div>
@@ -230,7 +230,8 @@
             <div class="row">
                 <div class="col-6 lable required">Case Worker Email
                 </div>
-                <div class="col-6"> <input name="CaseWorkerEmail" formControlName="CaseWorkerEmail" type="text"
+                <div class="col-6"> <input maxlength="25" name="CaseWorkerEmail" formControlName="CaseWorkerEmail"
+                        type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('CaseWorkerEmail')?.invalid && showError}">
                 </div>
             </div>
@@ -250,9 +251,9 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-12">
             {{frm.value | json}}
         </div>
-    </div>
+    </div> -->
 </form>
