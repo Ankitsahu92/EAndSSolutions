@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiBaseUrl: 'https://localhost:7160/api/'
+  //apiBaseUrl: 'https://apieandssolutions20220104183107.azurewebsites.net/api/'
 };
 
 /*
