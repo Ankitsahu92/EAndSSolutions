@@ -28,5 +28,5 @@ export interface InsertUpdateEmployeeModel {
     emergencyPhone: string;
     emergencyContact: string;
     maritalStatus: string;
-    dob: Date;
+    dob: Date; status: string;
 }

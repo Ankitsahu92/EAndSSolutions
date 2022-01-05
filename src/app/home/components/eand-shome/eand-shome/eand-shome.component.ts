@@ -14,7 +14,7 @@ export class EAndSHomeComponent implements OnInit {
   }
 
   onCardClicked(item: string) {
-    const url = item == 'New Client' ? "/NewClient" : "/NewEmployee";
+    const url = item == 'New Client' ? "/Client" : "/Employee";
     this.router.navigate([url])
   }
 

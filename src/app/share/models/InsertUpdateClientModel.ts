@@ -31,4 +31,5 @@ export interface InsertUpdateClientModel {
     caseWorkerPhone: string;
     emergencyContact: string;
     caseWorkerEmail: string;
+    status: string;
 }

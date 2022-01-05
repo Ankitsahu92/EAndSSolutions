@@ -140,7 +140,8 @@ export class NewClientComponent implements OnInit {
 
     this.client = {
       id: data.ID,
-      isActive: data.Active,
+      status: "" + data.Status?.id,
+      isActive: true,
       city: data.City,
       insurenceID: data.InsurenceID,
       billTo: data.BillTo,

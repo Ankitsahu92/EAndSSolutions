@@ -128,9 +128,8 @@ export class NewEmployeeComponent implements OnInit {
     const data = this.frm.value;
 
     this.emp = {
-
-
-      isActive: data.Active,
+      status: "" + data.Status?.id,
+      isActive: true,
       id: data.ID,
       ssn: data.SSN,
       firstName: data.FirstName,
@@ -139,8 +138,8 @@ export class NewEmployeeComponent implements OnInit {
       cellPhone: this.cleanPhoneNum(data.CellPhone),
       homePhone: this.cleanPhoneNum(data.HomePhone),
       email: data.Email,
-      dateOfHire: data.DateOfHire,
-      dateOfFirstCase: data.DateOfFirstCase,
+      dateOfHire: data.DateOfHire ? data.DateOfHire : null,
+      dateOfFirstCase: data.DateOfFirstCase ? data.DateOfFirstCase : null,
       employeeID: data.EmployeeID,
       gender: "" + data.Gender?.id,
       hrSupervisor: "" + data.HRSupervisor?.id,
