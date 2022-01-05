@@ -32,6 +32,8 @@ export class NewClientComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log("id is ", id);
     // this.loadDdlValues();
   }
 
@@ -112,7 +114,7 @@ export class NewClientComponent implements OnInit {
   }
 
   onCardClicked(item: string) {
-    const url = item == 'New Client' ? "/NewClient" : "/NewEmployee";
+    const url = item == 'New Client' ? "/Client/Create" : "/Employee/Create";
     this.router.navigate([url])
   }
 
