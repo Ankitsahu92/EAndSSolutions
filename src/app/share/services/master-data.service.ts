@@ -40,4 +40,13 @@ export class MasterDataService {
   GetHRSupervisorList() {
     return this.http.get<MasterData[]>(`${this.apiBaseUrl}MasterData/GetHRSupervisorList`);
   }
+
+
+  GetClientStatusList() {
+    return this.http.get<MasterData[]>(`${this.apiBaseUrl}MasterData/GetClientStatusList`);
+  }
+
+  GetEmployeeStatusList() {
+    return this.http.get<MasterData[]>(`${this.apiBaseUrl}MasterData/GetEmployeeStatusList`);
+  }
 }

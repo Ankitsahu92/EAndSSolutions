@@ -29,6 +29,7 @@ export class NewEmployeeComponent implements OnInit {
       this.StateList = data['StateList'];
       this.HRSupervisor = data['HRSupervisorList'];
       this.Ethnicity = data['EthnicityList'];
+      this.StatusList = data['StatusList'];
     });
   }
 
@@ -39,17 +40,18 @@ export class NewEmployeeComponent implements OnInit {
   loadForm() {
     return this.fb.group({
       ID: [0, [Validators.required]],
-      Active: [true, [Validators.required]],
-      DateOfHire: ['', [Validators.required]],
+      //Active: [true, [Validators.required]],
+      Status: ['', [Validators.required]],
+      DateOfHire: [''],
       City: ['', [Validators.required]],
       SSN: ['', [Validators.required]],
-      DateOfFirstCase: ['', [Validators.required]],
+      DateOfFirstCase: [''],
       County: ['', [Validators.required]],
       FirstName: ['', [Validators.required]],
       Email: ['', [Validators.required, Validators.email, Validators.pattern(AppConstants.email)]],
       DOB: ['', [Validators.required]],
       State: ['', [Validators.required]],
-      MiddleName: ['', [Validators.required]],
+      MiddleName: [''],
       EmployeeID: ['', [Validators.required]],
       ZipCode: ['', [Validators.required]],
       LastName: ['', [Validators.required]],
@@ -59,7 +61,7 @@ export class NewEmployeeComponent implements OnInit {
       HRSupervisor: ['', [Validators.required]],
       EmergencyContact: ['', [Validators.required]],
       HomePhone: ['', [Validators.required]],
-      Ethnicity: ['', [Validators.required]],
+      Ethnicity: [''],
       MaritalStatus: ['', [Validators.required]]
     });
   }
@@ -70,6 +72,7 @@ export class NewEmployeeComponent implements OnInit {
   HRSupervisor: any[] = [];
   MaritalStatusList: any[] = [];
   Ethnicity: any[] = [];
+  StatusList: any[] = [];
   //***********ddl State End ******* */
 
   // loadDdlValues() {

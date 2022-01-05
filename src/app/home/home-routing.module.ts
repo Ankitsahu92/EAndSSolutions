@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CaseCoordinatorResolver, EthnicityResolver, GenderResolver, HRSupervisorResolver, MaritalStatusResolver, NurseResolver, StateResolver } from '../share/resolver';
+import { CaseCoordinatorResolver, ClientStatusResolver, EmployeeStatusResolver, EthnicityResolver, GenderResolver, HRSupervisorResolver, MaritalStatusResolver, NurseResolver, StateResolver } from '../share/resolver';
 import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
@@ -24,7 +24,8 @@ const routes: Routes = [
           StateList: StateResolver,
           MaritalStatusList: MaritalStatusResolver,
           NurseResolverList: NurseResolver,
-          CaseCoordinatorResolverList: CaseCoordinatorResolver
+          CaseCoordinatorResolverList: CaseCoordinatorResolver,
+          StatusList: ClientStatusResolver
         }
       },
       {
@@ -37,7 +38,8 @@ const routes: Routes = [
             StateList: StateResolver,
             MaritalStatusList: MaritalStatusResolver,
             EthnicityList: EthnicityResolver,
-            HRSupervisorList: HRSupervisorResolver
+            HRSupervisorList: HRSupervisorResolver,
+            StatusList: EmployeeStatusResolver
           }
       },
       { path: '', redirectTo: '/Home', pathMatch: 'full' }

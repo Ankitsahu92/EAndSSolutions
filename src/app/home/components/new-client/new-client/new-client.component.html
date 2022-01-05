@@ -17,9 +17,11 @@
     <div class="flexContainer">
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable required">Active</div>
+                <div class="col-6 lable required">Status</div>
                 <div class="col-6">
-                    <p-inputSwitch formControlName="Active" placeholder="Active"></p-inputSwitch>
+                    <!-- <p-inputSwitch formControlName="Active" placeholder="Active"></p-inputSwitch> -->
+                    <p-dropdown [styleClass]="hasError('Status')" [options]="StatusList" formControlName="Status"
+                        optionLabel="name" [filter]="true" filterBy="name" placeholder=" "></p-dropdown>
                 </div>
             </div>
         </div>
@@ -49,7 +51,7 @@
 
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable required"># of Children</div>
+                <div class="col-6 lable"># of Children</div>
                 <div class="col-6"> <input (keypress)="isNumber($event)" maxlength="10" name="NoOfChildren"
                         formControlName="NoOfChildren" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('NoOfChildren')?.invalid && showError}">
@@ -85,7 +87,7 @@
                 <div class="col-6 lable required">State</div>
                 <div class="col-6">
                     <p-dropdown [styleClass]="hasError('State')" [options]="StateList" formControlName="State"
-                        [filter]="true" filterBy="name" placeholder="Select" optionLabel="name">
+                        [filter]="true" filterBy="name" placeholder=" " optionLabel="name">
                     </p-dropdown>
                     <!-- <select name="State" class="form-control" id="ddlState"></select> -->
                 </div>
@@ -94,7 +96,7 @@
 
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable required">Middle Name</div>
+                <div class="col-6 lable">Middle Name</div>
                 <div class="col-6"> <input maxlength="25" name="MiddleName" formControlName="MiddleName" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('MiddleName')?.invalid && showError}">
                 </div>
@@ -133,7 +135,7 @@
                 <div class="col-6 lable required">Gender</div>
                 <div class="col-6">
                     <p-dropdown [styleClass]="hasError('Gender')" [options]="GenderList" formControlName="Gender"
-                        optionLabel="name" [filter]="true" filterBy="name" placeholder="Select"></p-dropdown>
+                        optionLabel="name" [filter]="true" filterBy="name" placeholder=" "></p-dropdown>
                 </div>
             </div>
         </div>
@@ -164,7 +166,7 @@
                 <div class="col-6 lable required">Nurse</div>
                 <div class="col-6">
                     <p-dropdown [styleClass]="hasError('Nurse')" [options]="NurseList" formControlName="Nurse"
-                        optionLabel="name" [filter]="true" filterBy="name" placeholder="Select"></p-dropdown>
+                        optionLabel="name" [filter]="true" filterBy="name" placeholder=" "></p-dropdown>
                 </div>
             </div>
         </div>
@@ -181,7 +183,7 @@
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable required">Ethnicity</div>
+                <div class="col-6 lable">Ethnicity</div>
                 <div class="col-6">
                     <input maxlength="25" name="Ethnicity" formControlName="Ethnicity" type="text"
                         [ngClass]="{'form-control ': true, 'is-invalid': frm.get('Ethnicity')?.invalid && showError}">
@@ -194,7 +196,7 @@
                 <div class="col-6">
                     <p-dropdown [styleClass]="hasError('CaseCoordinator')" [options]="CaseCoordinatorList"
                         formControlName="CaseCoordinator" optionLabel="name" [filter]="true" filterBy="name"
-                        placeholder="Select"></p-dropdown>
+                        placeholder=" "></p-dropdown>
                 </div>
             </div>
         </div>
@@ -218,11 +220,11 @@
         </div>
         <div class="flex-row-item">
             <div class="row">
-                <div class="col-6 lable required">Marital Status</div>
+                <div class="col-6 lable">Marital Status</div>
                 <div class="col-6">
                     <p-dropdown [styleClass]="hasError('MaritalStatus')" [options]="MaritalStatusList"
                         formControlName="MaritalStatus" optionLabel="name" [filter]="true" filterBy="name"
-                        placeholder="Select"></p-dropdown>
+                        placeholder=" "></p-dropdown>
                 </div>
             </div>
         </div>

@@ -27,6 +27,7 @@ export class NewClientComponent implements OnInit {
       this.StateList = data['StateList'];
       this.NurseList = data['NurseResolverList'];
       this.CaseCoordinatorList = data['CaseCoordinatorResolverList'];
+      this.StatusList = data['StatusList'];
     });
   }
 
@@ -37,12 +38,13 @@ export class NewClientComponent implements OnInit {
   loadForm() {
     return this.fb.group({
       ID: [0, [Validators.required]],
-      Active: [true, [Validators.required]],
+      //Active: [true, [Validators.required]],
+      Status: ['', [Validators.required]],
       City: ['', [Validators.required]],
       InsurenceID: ['', [Validators.required]],
       BillTo: ['', [Validators.required]],
       ClientID: ['', [Validators.required]],
-      NoOfChildren: ['', [Validators.required]],
+      NoOfChildren: [''],
       Nurse: ['', [Validators.required]],
       CaseCoordinator: ['', [Validators.required]],
       CaseWorkerPhone: ['', [Validators.required]],
@@ -53,15 +55,15 @@ export class NewClientComponent implements OnInit {
       County: ['', [Validators.required]],
       FirstName: ['', [Validators.required]],
       State: ['', [Validators.required]],
-      MiddleName: ['', [Validators.required]],
+      MiddleName: [''],
       ZipCode: ['', [Validators.required]],
       LastName: ['', [Validators.required]],
       Gender: ['', [Validators.required]],
       CellPhone: ['', [Validators.required]],
       EmergencyContact: ['', [Validators.required]],
-      Ethnicity: ['', [Validators.required]],
+      Ethnicity: [''],
       Email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      MaritalStatus: ['', [Validators.required]],
+      MaritalStatus: [''],
     });
   }
 
@@ -71,6 +73,7 @@ export class NewClientComponent implements OnInit {
   NurseList: any[] = [];
   MaritalStatusList: any[] = [];
   CaseCoordinatorList: any[] = [];
+  StatusList: any[] = [];
   //***********ddl State End ******* */
 
   loadDdlValues() {
