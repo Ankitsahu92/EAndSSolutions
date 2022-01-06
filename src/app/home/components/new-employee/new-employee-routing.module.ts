@@ -17,7 +17,9 @@ const routes: Routes = [
     }
   },
   {
-    path: 'Update/:id', component: NewEmployeeComponent, resolve: {
+    path: 'Update/:id'
+    //path: 'Create/:id'
+    , component: NewEmployeeComponent, resolve: {
       GenderList: GenderResolver,
       StateList: StateResolver,
       MaritalStatusList: MaritalStatusResolver,

@@ -20,7 +20,7 @@ export class EmployeeService {
   }
 
   GetByID(id: number) {
-    return this.http.get<InsertUpdateEmployeeModel[]>(`${this.apiBaseUrl}${this.controllerName}${id}`);
+    return this.http.get<InsertUpdateEmployeeModel>(`${this.apiBaseUrl}${this.controllerName}${id}`);
   }
 
   Post(body: any) {

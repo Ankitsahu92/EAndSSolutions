@@ -19,7 +19,7 @@ export class ClientService {
   }
 
   GetByID(id: number) {
-    return this.http.get<InsertUpdateClientModel[]>(`${this.apiBaseUrl}${this.controllerName}${id}`);
+    return this.http.get<InsertUpdateClientModel>(`${this.apiBaseUrl}${this.controllerName}${id}`);
   }
 
   Post(body: any) {

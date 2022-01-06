@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConstants } from 'src/app/share/constant/constant';
-import { isNumberFn } from 'src/app/share/functionals/customFunctional';
+import { findDdlObjectFn, isNumberFn, StringToDateFn } from 'src/app/share/functionals/customFunctional';
 import { InsertUpdateEmployeeModel } from 'src/app/share/models';
 import { EmployeeService, MessageService } from 'src/app/share/services';
 
@@ -12,6 +12,7 @@ import { EmployeeService, MessageService } from 'src/app/share/services';
   styleUrls: ['./new-employee.component.scss']
 })
 export class NewEmployeeComponent implements OnInit {
+  id: number = 0;
   showError: boolean = false;
   maxDate = new Date();
   frm: FormGroup;
@@ -34,10 +35,51 @@ export class NewEmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log("id is ", id);
+    const paramID = this.route.snapshot.paramMap.get('id');
+    console.log("id is ", paramID);
+    if (paramID) {
+      this.id = +paramID;
+      this.loadClientData()
+    }
+  }
 
-    // this.loadDdlValues();
+  loadClientData() {
+    this.employeeService.GetByID(this.id).subscribe(res => {
+      if (res) {
+        console.log(res);
+
+        this.createFormObject(res);
+      }
+    })
+  }
+
+  createFormObject(res: InsertUpdateEmployeeModel) {
+    const data = {
+      "ID": res.id,
+      "Status": findDdlObjectFn([...this.StatusList], res.status),
+      "DateOfHire": StringToDateFn(res.dateOfHire),
+      "City": res.city,
+      "SSN": res.ssn,
+      "DateOfFirstCase": StringToDateFn(res.dateOfFirstCase),
+      "County": res.county,
+      "FirstName": res.firstName,
+      "Email": res.email,
+      "DOB": StringToDateFn(res.dob),
+      "State": findDdlObjectFn([...this.StateList], res.state),
+      "MiddleName": res.middleName,
+      "EmployeeID": res.employeeID,
+      "ZipCode": res.zipCode,
+      "LastName": res.lastName,
+      "Gender": findDdlObjectFn([...this.GenderList], res.gender),
+      "EmergencyPhone": res.emergencyPhone,
+      "CellPhone": res.cellPhone,
+      "HRSupervisor": findDdlObjectFn([...this.HRSupervisor], res.hrSupervisor),
+      "EmergencyContact": res.emergencyContact,
+      "HomePhone": res.homePhone,
+      "Ethnicity": findDdlObjectFn([...this.Ethnicity], res.ethnicity),
+      "MaritalStatus": findDdlObjectFn([...this.MaritalStatusList], res.maritalStatus)
+    };
+    this.frm.setValue(data);
   }
 
   loadForm() {
@@ -78,44 +120,10 @@ export class NewEmployeeComponent implements OnInit {
   StatusList: any[] = [];
   //***********ddl State End ******* */
 
-  // loadDdlValues() {
-  //   this.StateList = [
-  //     { name: 'New York', code: 'NY' },
-  //     { name: 'Rome', code: 'RM' },
-  //     { name: 'London', code: 'LDN' },
-  //     { name: 'Istanbul', code: 'IST' },
-  //     { name: 'Paris', code: 'PRS' }
-  //   ];
-
-  //   this.GenderList = [
-  //     { name: 'Male', code: 'Male' },
-  //     { name: 'Female', code: 'Female' },
-  //   ];
-
-  //   this.HRSupervisor = [
-  //     { name: 'Nurse 1', code: 1 },
-  //     { name: 'Nurse 2', code: 2 },
-  //   ];
-
-  //   this.MaritalStatusList = [
-  //     { name: 'Married', code: 1 },
-  //     { name: 'Single', code: 2 },
-  //     { name: 'Divorced', code: 3 },
-  //     { name: 'Separated', code: 4 },
-  //     { name: 'Widowed', code: 5 },
-  //     { name: 'Numerous', code: 6 },
-  //     { name: 'Unknown', code: 7 },
-  //   ];
-
-  //   this.Ethnicity = [
-  //     { name: 'Ethnicity 1', code: 1 },
-  //     { name: 'Ethnicity 2', code: 2 },
-  //   ];
-  // }
   emp?: InsertUpdateEmployeeModel;
   onCardClicked(item: string) {
-    const url = item == 'New Client' ? "/Client/Create" : "/Employee/Create";
-    this.router.navigate([url])
+    //const url = item == 'New Client' ? "/Client/Create" : "/Employee/Create";
+    this.router.navigate(['Employee'])
   }
 
   isNumber(evt: any) {
@@ -156,28 +164,33 @@ export class NewEmployeeComponent implements OnInit {
       maritalStatus: "" + data.MaritalStatus?.id,
       dob: data.DOB
     }
-    if (this.emp.id > 0) {
+    if (this.emp?.id != 0) {
       this.emp.modifiedBy = 1;
-      //this.emp.modifiedOn = data.Active;
       this.emp.modifiedByIP = '192.168.125';
+      this.employeeService.Put(this.emp).subscribe((res: any) => {
+        this.handleResponse(res)
+      });
     } else {
       this.emp.createdBy = 1;
-      //this.emp.createdOn = data.Active;
       this.emp.createdByIP = '192.168.125';
+      this.employeeService.Post(this.emp).subscribe((res: any) => {
+        this.handleResponse(res)
+      });
     }
-    console.log("data", this.emp);
-    this.employeeService.Post(this.emp).subscribe((res: any) => {
-      console.log(res);
-      if (res && res.success) {
-        this.messageService.Success(res.message);
-        this.showError = false;
-        this.frm.reset();
-      } else {
-        this.messageService.Error(res.message);
-      }
-    });
     return true;
   }
+
+  handleResponse(res: any) {
+    if (res && res.success) {
+      this.messageService.Success(res.message);
+      this.showError = false;
+      this.frm.reset();
+      this.router.navigate(['Employee']);
+    } else {
+      this.messageService.Error(res.message);
+    }
+  }
+
 
   hasError(fieldName: string, isDob: boolean = false) {
     // return "form-control is-invalid"

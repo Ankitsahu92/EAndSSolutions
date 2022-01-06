@@ -18,7 +18,9 @@ const routes: Routes = [
     }
   },
   {
-    path: 'Update/:id', component: NewClientComponent,
+    path: 'Update/:id'
+    //path: 'Create/:id'
+    , component: NewClientComponent,
     resolve: {
       GenderList: GenderResolver,
       StateList: StateResolver,

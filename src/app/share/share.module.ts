@@ -5,6 +5,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { CalendarModule } from 'primeng/calendar';
 import { InputMaskModule } from 'primeng/inputmask';
+import { TableModule } from 'primeng/table';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PhoneMaskDirective } from './directive/phone-mask.directive';
@@ -15,6 +16,7 @@ const primengModules = [
   InputSwitchModule,
   CalendarModule,
   InputMaskModule,
+  TableModule,
 
   FormsModule,
   ReactiveFormsModule,

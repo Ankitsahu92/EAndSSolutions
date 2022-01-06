@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { isNumberFn } from 'src/app/share/functionals/customFunctional';
+import { isNumberFn, findDdlObjectFn } from 'src/app/share/functionals/customFunctional';
 import { InsertUpdateClientModel } from 'src/app/share/models';
 import { ClientService, MessageService } from 'src/app/share/services';
 
@@ -11,6 +11,8 @@ import { ClientService, MessageService } from 'src/app/share/services';
   styleUrls: ['./new-client.component.scss']
 })
 export class NewClientComponent implements OnInit {
+  [x: string]: any;
+  id: number = 0;
   frm: FormGroup;
   showError: boolean = false;
   constructor(
@@ -32,9 +34,11 @@ export class NewClientComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log("id is ", id);
-    // this.loadDdlValues();
+    const paramID = this.route.snapshot.paramMap.get('id');
+    if (paramID) {
+      this.id = +paramID;
+      this.loadClientData();
+    }
   }
 
   loadForm() {
@@ -69,6 +73,45 @@ export class NewClientComponent implements OnInit {
     });
   }
 
+  loadClientData() {
+    this.clientService.GetByID(this.id).subscribe(res => {
+      if (res) {
+        this.createFormObject(res);
+      }
+    })
+  }
+
+  createFormObject(res: InsertUpdateClientModel) {
+    const data = {
+      "ID": res.id,
+      "Status": findDdlObjectFn([...this.StatusList], res.status),
+      "City": res.city,
+      "InsurenceID": res.insurenceID,
+      "BillTo": res.billTo,
+      "ClientID": res.clientID,
+      "NoOfChildren": res.noOfChildren,
+      "Nurse": findDdlObjectFn([...this.NurseList], res.nurse),
+      "CaseCoordinator": findDdlObjectFn([...this.CaseCoordinatorList], res.caseCoordinator),
+      "CaseWorkerPhone": res.caseWorkerPhone,
+      "CaseWorkerEmail": res.caseWorkerEmail,
+      "ReferredBy": res.referredBy,
+      "SSN": res.ssn,
+      "County": res.county,
+      "FirstName": res.firstName,
+      "State": findDdlObjectFn([...this.StateList], res.state),
+      "MiddleName": res.middleName,
+      "ZipCode": res.zipCode,
+      "LastName": res.lastName,
+      "Gender": findDdlObjectFn([...this.GenderList], res.gender),
+      "CellPhone": res.cellPhone,
+      "EmergencyContact": res.emergencyContact,
+      "Ethnicity": res.ethnicity,
+      "Email": res.email,
+      "MaritalStatus": findDdlObjectFn([...this.MaritalStatusList], res.maritalStatus)
+    }
+    this.frm.setValue(data);
+  }
+
   //***********ddl State Begin ******* */
   StateList: any[] = [];
   GenderList: any[] = [];
@@ -78,49 +121,17 @@ export class NewClientComponent implements OnInit {
   StatusList: any[] = [];
   //***********ddl State End ******* */
 
-  loadDdlValues() {
-    this.StateList = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
-    ];
-
-    this.GenderList = [
-      { name: 'Male', code: 'Male' },
-      { name: 'Female', code: 'Female' },
-    ];
-
-    this.NurseList = [
-      { name: 'Nurse 1', code: 1 },
-      { name: 'Nurse 2', code: 2 },
-    ];
-
-    this.MaritalStatusList = [
-      { name: 'Married', code: 1 },
-      { name: 'Single', code: 2 },
-      { name: 'Divorced', code: 3 },
-      { name: 'Separated', code: 4 },
-      { name: 'Widowed', code: 5 },
-      { name: 'Numerous', code: 6 },
-      { name: 'Unknown', code: 7 },
-    ];
-
-    this.CaseCoordinatorList = [
-      { name: 'Case Coordinator 1', code: 1 },
-      { name: 'Case Coordinator 2', code: 2 },
-    ];
-  }
-
   onCardClicked(item: string) {
-    const url = item == 'New Client' ? "/Client/Create" : "/Employee/Create";
+
+    const url = 'Client';
+    //item == 'New Client' ? "/Client/Create" : "/Employee/Create";
     this.router.navigate([url])
   }
 
   isNumber(evt: any) {
     return isNumberFn(evt)
   }
+
   hasError(fieldName: string, isDob: boolean = false) {
     // return "form-control is-invalid"
     if (isDob)
@@ -130,11 +141,10 @@ export class NewClientComponent implements OnInit {
   }
 
   client?: InsertUpdateClientModel;
+
   onSave() {
     this.showError = true;
     if (this.frm.invalid) {
-      console.log(this.frm);
-
       this.messageService.Error("Please fill in all the required fields.");
       return false;
     }
@@ -169,29 +179,32 @@ export class NewClientComponent implements OnInit {
       maritalStatus: "" + data.MaritalStatus?.id,
 
     }
-    if (this.client?.id > 0) {
+    if (this.client?.id != 0) {
       this.client.modifiedBy = 1;
-      //this.emp.modifiedOn = data.Active;
       this.client.modifiedByIP = '192.168.125';
+      this.clientService.Put(this.client).subscribe((res: any) => {
+        this.handleResponse(res)
+      });
     } else {
       this.client.createdBy = 1;
-      //this.emp.createdOn = data.Active;
       this.client.createdByIP = '192.168.125';
+      this.clientService.Post(this.client).subscribe((res: any) => {
+        this.handleResponse(res)
+      });
     }
-    // console.log("data", this.client);
-    this.clientService.Post(this.client).subscribe((res: any) => {
-      console.log(res, JSON.stringify(res));
-      if (res && res.success) {
-        this.messageService.Success(res.message);
-        this.showError = false;
-        this.frm.reset();
-      } else {
-        this.messageService.Error(res.message);
-      }
-    });
     return true;
   }
 
+  handleResponse(res: any) {
+    if (res && res.success) {
+      this.messageService.Success(res.message);
+      this.showError = false;
+      this.frm.reset();
+      this.router.navigate(['Client']);
+    } else {
+      this.messageService.Error(res.message);
+    }
+  }
 
   cleanPhoneNum(data: string) {
     return data.replace('(', '').replace(')', '').replace('-', '').replace(' ', '');

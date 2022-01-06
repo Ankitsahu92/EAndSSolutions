@@ -9,10 +9,11 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { SpinnerService, EmitEvent, Events } from '../service/spinner.service';
+import { MessageService } from 'src/app/share/services';
 
 @Injectable()
 export class SpinnerRequestResponseInterceptor implements HttpInterceptor {
-  constructor(private service: SpinnerService) { }
+  constructor(private service: SpinnerService, private messageService: MessageService,) { }
 
   intercept(
     req: HttpRequest<any>,
@@ -30,7 +31,7 @@ export class SpinnerRequestResponseInterceptor implements HttpInterceptor {
       }),
       catchError((error) => {
         console.log("catchError", error);
-
+        this.messageService.Error("Something Went Wrong!!!");
         this.service.emit(new EmitEvent(Events.httpResponseError));
         return throwError(error.message);
       })
