@@ -1,0 +1,40 @@
+<div class="row headerDiv">
+    <div class="col-2">
+        <button class="btnHeader active" (click)="onCardClicked('New Client')"> New Client</button>
+    </div>
+    <div class="col-4" style="text-align: center;">
+
+    </div>
+
+    <div class="col-4" style="text-align: center;">
+        <!-- <button class="btnHeader active" (click)="onCardClicked('New Employee')"> New Employee</button> -->
+    </div>
+    <div class="col-2">
+
+    </div>
+</div>
+
+<div class="row">
+    <p-table [value]="clientList">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Client ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Case Worker Email</th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-client>
+            <tr>
+                <td>{{client.clientID}}</td>
+                <td>{{client.firstName}} {{client.middleName}} {{client.lastName}}</td>
+                <td>{{client.email}}</td>
+                <td>{{client.caseWorkerEmail}}</td>
+                <td>
+                    <button class="btnHeader active" (click)="action('update',client)">Update</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

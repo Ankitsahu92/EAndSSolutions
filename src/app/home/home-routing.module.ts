@@ -13,18 +13,18 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'NewClient',
+        path: 'Client',
         loadChildren: () =>
           import('./components/new-client/new-client.module').then(
             (m) => m.NewClientModule
-          ),
+          )
       },
       {
-        path: 'NewEmployee',
+        path: 'Employee',
         loadChildren: () =>
           import('./components/new-employee/new-employee.module').then(
             (m) => m.NewEmployeeModule
-          ),
+          )
       },
       { path: '', redirectTo: '/Home', pathMatch: 'full' }
     ]
